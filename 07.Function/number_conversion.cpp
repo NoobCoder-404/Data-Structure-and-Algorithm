@@ -52,6 +52,59 @@ int hexadecimalToDecimal(string n)
     return ans;
 }
 
+void decimalToBinaray(int n)
+{
+    vector<int> v;
+    while (n != 0)
+    {
+        v.push_back(n % 2);
+        n /= 2;
+    }
+    for (int i = v.size() - 1; i >= 0; i--)
+    {
+        cout << v[i];
+    }
+}
+
+int decimalToOctal(int n)
+{
+    // formula = answer + remainder( pow(10,i))
+    int ans = 0, i = 0;
+    while (n != 0)
+    {
+        int remainder = n % 8;
+        ans = ans + remainder * pow(10, i);
+        n /= 8;
+        i++;
+    }
+    return ans;
+}
+
+void decimalToHexadecimal(int n)
+{
+    char hexa[100];
+    int i = 0;
+    while (n != 0)
+    {
+        int remainder = n % 16;
+        if (remainder < 10)
+        {
+            hexa[i++] = 48 + remainder;
+        }
+        else
+        {
+            hexa[i++] = 55 + remainder;
+        }
+        n /= 16;
+    }
+    cout << "Decimal to Hexadecimal : ";
+    for (int j = i - 1; j >= 0; j--)
+    {
+        cout << hexa[j];
+    }
+    cout << endl;
+}
+
 int main()
 {
     /*
@@ -65,11 +118,24 @@ int main()
     int decimal = octalToDecimal(n);
     cout << "Ocatal to Decimal : " << decimal << endl;
 
-    */
+
 
     string n;
     cin >> n;
     cout << "Hexadecimal to Decimal : " << hexadecimalToDecimal(n) << endl;
+
+    int n;
+    cin >> n;
+    decimalToBinaray(n);
+
+
+    int n;
+    cin >> n;
+    cout << "Decimal to Ocatal : " << decimalToOctal(n) << endl;
+    */
+    int n;
+    cin >> n;
+    decimalToHexadecimal(n);
 
     return 0;
 }
